@@ -1,0 +1,40 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:solid/recommended",
+        "plugin:import/errors",
+        "plugin:jsx-a11y/recommended",
+        "prettier"
+    ],
+    "rules": {
+        "func-style": ["error", "expression"],
+        "prefer-const": "error"
+    },
+    "plugins": [
+        "solid",
+        "import",
+        "jsx-a11y"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2022,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "settings": {
+        "solid": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx"]
+            }
+        }
+    }
+}
