@@ -1,4 +1,4 @@
-import { createSignal, For, Show } from 'solid-js';
+import { createSignal, createEffect, For, Show } from 'solid-js';
 import reachableKeys from './utils/reachableKeys';
 import countPaths from './utils/countPaths';
 import listAcyclicPaths from './utils/listAcrylicPaths';
@@ -9,6 +9,13 @@ const App = () => {
     const [currentNumber, setCurrentNumber] = createSignal(null);
     const [hopCount, setHopCount] = createSignal(null);
     const [acyclicPaths, setAcyclicPaths] = createSignal([]);
+
+    createEffect(() => {
+        if (currentNumber() !== null) {
+            setHopCount(countPaths(currentNumber(), hops()));
+        }
+    });
+
     return (
         <>
             <div class='input'>
@@ -37,7 +44,6 @@ const App = () => {
                                     setCurrentNumber(number);
                                     setHopCount(countPaths(number, hops()));
                                     setAcyclicPaths(listAcyclicPaths(number));
-                                    console.log(acyclicPaths());
                                 }}
                             >
                                 {number}
